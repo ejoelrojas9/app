@@ -1,10 +1,10 @@
 class Api::V1::PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_api_v1_post, only: %i[ show update destroy ]
 
   # GET /api/v1/posts
   def index
     @api_v1_posts = Api::V1::Post.all
-
     render json: @api_v1_posts
   end
 
